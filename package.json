@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.1",
-    "@wasm-tool/rollup-plugin-rust": "^1.0.7",
+    "@wasm-tool/rollup-plugin-rust": "nacardin/rollup-plugin-rust#fd6a8a0950510fdd47e35ca0c0bd35a3f4a8d6a4",
     "@wasm-tool/wasm-pack-plugin": "^1.5.0",
     "copy-webpack-plugin": "^9.0.1",
     "rimraf": "^3.0.0",

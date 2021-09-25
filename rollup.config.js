@@ -1,6 +1,6 @@
+import dts from "rollup-plugin-dts";
 import rust from "@wasm-tool/rollup-plugin-rust";
 import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
 
 const config = [
   {
