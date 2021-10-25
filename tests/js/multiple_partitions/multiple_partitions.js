@@ -9,7 +9,7 @@ export const setup = async () => {
   const admin = await fluvio.admin();
   for(let i = 0; i < 3; i++) {
     try {
-      await admin.createTopic(topic, 1);
+      await admin.createTopic(topic, 5);
       break;
     } catch (e) {
       console.error(`${e.message}`);
@@ -24,12 +24,11 @@ export const teardown = async () => {
 export const test = async () => {
   const producer = await fluvio.topicProducer(topic);
   await producer.send("", `count`);
-  const offset = Offset.fromEnd(1);
+  const offset = Offset.beginning();
 
-  const consumer = await fluvio.partitionConsumer(topic, 0);
-  let stream = await consumer.stream(offset); // this is a work around as Offset is not in scope.
+  const consumer = await fluvio.allPartitionsConsumer(topic);
+  let stream = await consumer.stream(offset); 
   let next = await stream.next();
-
   let count = 0;
   const userAgent = navigator.userAgent;
   while (count < 100) {
